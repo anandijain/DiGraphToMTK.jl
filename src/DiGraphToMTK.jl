@@ -19,12 +19,8 @@ end
 
 function digraph_to_eqs(g, D, sts, ps)
     @assert length(ps) == ne(g)
-    es = collect(edges(g))
-    vs = vertices(g)
-
-    edge_idx_d = Dict(es .=> 1:ne(g))
-    
-    [D(sts[v]) ~ make_rhs(g, v, sts, ps, edge_idx_d) for v in vs]
+    edge_idx_d = Dict(collect(edges(g)) .=> 1:ne(g))
+    [D(sts[v]) ~ make_rhs(g, v, sts, ps, edge_idx_d) for v in vertices(g)]
 end
 
 export digraph_to_eqs

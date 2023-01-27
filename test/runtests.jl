@@ -21,6 +21,6 @@ g2es = SE.([1 => 2, 2 => 3, 3 => 4, 3 => 6, 3 => 7, 7 => 4, 7 => 5, 7 => 6, 5 =>
 g2 = SimpleDiGraph(7)
 [add_edge!(g2, e) for e in g2es]
 ps2 = only.([@parameters $p for p in [Symbol(:p, i) for i in 1:ne(g2)]])
-eqs2 = digraph_to_eqs(g2, D, sts, ps)
+eqs2 = digraph_to_eqs(g2, D, sts, ps2)
 @named sys2 = ODESystem(eqs2)
 ssys2 = structural_simplify(sys2)
