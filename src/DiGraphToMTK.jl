@@ -1,5 +1,5 @@
 module DiGraphToMTK
-using Graphs, Symbolics, ModelingToolkit
+using Graphs, Symbolics
 SE = Graphs.SimpleGraphs.SimpleEdge
 
 function make_rhs(g, v, sts, ps, edge_idx_d)
@@ -17,9 +17,9 @@ function make_rhs(g, v, sts, ps, edge_idx_d)
 end
 
 
-function digraph_to_eqs(g, D, sts; psyms=[Symbol(:p, i) for i in 1:ne(g)])
+function digraph_to_eqs(g, D, sts, ps)
+    @assert length(ps) == ne(g)
     es = collect(edges(g))
-    ps = only.([@parameters $p for p in psyms])
     vs = vertices(g)
 
     edge_idx_d = Dict(es .=> 1:ne(g))
