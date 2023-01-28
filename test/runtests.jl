@@ -1,4 +1,4 @@
-using DiGraphToMTK, Graphs, Symbolics, ModelingToolkit
+using DiGraphToMTK, Graphs, Symbolics, ModelingToolkit, Test
 SE = Graphs.SimpleGraphs.SimpleEdge
 
 @parameters t
